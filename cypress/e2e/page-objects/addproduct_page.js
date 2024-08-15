@@ -1,5 +1,6 @@
-export class MyProducts{
+export class AddProduct{
 
+    
     titlefield = 'input[name=title]';
     categoryfield = 'div[name=categories]';
     descriptionfield = 'textarea[name=description]';
@@ -7,29 +8,13 @@ export class MyProducts{
     rentpricefield = 'input[name=rent_price]';
     rentdurationfield = 'div[name=rent_duration_type]';
     addbutton = 'button[type=submit]';
-    furniturecategoryremove = 'a[value=Furniture]'
-    outdoorcategoryremove = 'a[value=Outdoor]'
-    sportinggoodscategoryremove = 'a[value=Sporting Goods]'
-    electronicscategoryremove = 'a[value=Electronics]'
-    homeappliancescategoryremove ='a[value=Home Appliances]'
-    toyscategoryremove = 'a[value=toys]'
 
 
-    deleteproduct(prodname){
-        cy.contains('div', prodname).siblings('button').click();
-        cy.contains('button','Yes, delete').click();
-        cy.contains('div', prodname).should('not.exist').then(() => {
-            cy.log('The '+ prodname +' product has been successfully deleted.'); 
-    });
-            
-    }
-
-    selectedtoedit(prodname){
-        cy.contains('div', prodname).click();
+    navigatetopage(){
+        cy.contains('button','Add Product').click();
     }
 
     entertitle(title){
-        cy.get(this.titlefield).clear();
         cy.get(this.titlefield).type(title);
     }
 
@@ -39,22 +24,15 @@ export class MyProducts{
         cy.get(this.categoryfield).type('{esc}')
     }
 
-    removecategory(categoryname){
-        cy.get('a[value='+categoryname+'] .delete').click();
-    }
-
     enterdescription(description){
-        cy.get(this.descriptionfield).clear();
         cy.get(this.descriptionfield).type(description);
     }
 
     enterpurchaseprice(purchaseprice){
-        cy.get(this.purchasepricefield).clear();
         cy.get(this.purchasepricefield).type(purchaseprice);
     }
 
     enterrentprice(rentprice,renttype){
-        cy.get(this.rentpricefield).clear();
         cy.get(this.rentpricefield).type(rentprice);
         cy.get(this.rentdurationfield).click();
         cy.contains('span',renttype);
@@ -63,6 +41,7 @@ export class MyProducts{
     clickadd(){
         cy.get(this.addbutton).click();
     }
+
 
 
 }
