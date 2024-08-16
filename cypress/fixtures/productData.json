@@ -1,0 +1,30 @@
+[
+    {
+      "title": "Test Product 1",
+      "category": "Outdoor",
+      "description": "Testing description 1",
+      "purchasePrice": "1000",
+      "rentPrice": { "amount": "200", "frequency": "Weekly" }
+    },
+    {
+      "title": "Test Product 2",
+      "category": "Electronics",
+      "description": "Testing description 2",
+      "purchasePrice": "1500",
+      "rentPrice": { "amount": "250", "frequency": "Daily" }
+    },
+    {
+      "title": "Test Product 3",
+      "category": "Furniture",
+      "description": "Testing description 3",
+      "purchasePrice": "2000",
+      "rentPrice": { "amount": "300", "frequency": "Monthly" }
+    },
+    {
+      "title": "Test Product 4",
+      "category": "Outdoor",
+      "description": "Testing description 4",
+      "purchasePrice": "1200",
+      "rentPrice": { "amount": "180", "frequency": "Weekly" }
+    }
+  ]

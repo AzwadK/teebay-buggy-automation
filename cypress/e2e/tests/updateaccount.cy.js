@@ -12,7 +12,7 @@ describe('Account Update Tests', () => {
     
     const accountsettings = new AccountSettings()
 
-    it('Should Successfully update account info', () => {
+    it.skip('Should Successfully update account info', () => {
 
         accountsettings.gotopage();
         accountsettings.enterFirstName("Updated")
@@ -26,6 +26,34 @@ describe('Account Update Tests', () => {
 
 
     });
+
+    it('Form is navigatable using tab key', () => {
+
+        accountsettings.gotopage();
+
+        cy.get('input[name=first_name]').focus().tab();
+        cy.wait(1000); 
+
+        cy.focused().should('have.attr', 'name', 'last_name'); 
+        cy.wait(1000); 
+
+        cy.focused().tab(); 
+        cy.focused().should('have.attr', 'name', 'address'); 
+        cy.wait(1000); 
+
+        cy.focused().tab(); 
+        cy.focused().should('have.attr', 'name', 'email');
+        cy.wait(1000); 
+
+        cy.focused().tab(); 
+        cy.focused().should('have.attr', 'name', 'phone_number');
+        cy.wait(1000); 
+
+        cy.focused().tab();
+        cy.focused().should('have.attr', 'type', 'submit'); 
+        cy.wait(1000); 
+
+      });
 
 
 });

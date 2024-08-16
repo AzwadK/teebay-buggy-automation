@@ -35,7 +35,7 @@ export class AddProduct{
     enterrentprice(rentprice,renttype){
         cy.get(this.rentpricefield).type(rentprice);
         cy.get(this.rentdurationfield).click();
-        cy.contains('span',renttype);
+        cy.contains('span',renttype).click();
     }
 
     clickadd(){

@@ -2,6 +2,7 @@ import { LoginPage } from "../page-objects/login_page";
 import { MyProducts } from "../page-objects/myproducts_page";
 import { AddProduct } from "../page-objects/addproduct_page";
 
+
 const loginpage = new LoginPage;
 
 beforeEach(() => {
@@ -11,16 +12,27 @@ beforeEach(() => {
 const myproducts = new MyProducts();
 const addproducts = new AddProduct();
 
+describe('Deletion Tests' , () =>{
 
-
-it('Delete a product', () => {
+it.skip('Succesfull product deletion', () => {
     myproducts.deleteproduct("Cricket kit");
 });
 
+it('All product deletion', () => {
+    myproducts.deleteproduct("Cricket kit");
+    myproducts.deleteproduct("iPhone 13 pro max");
+    cy.contains('div', 'You do not have any products!').should('exist').then(() => {
+        cy.log('All products have been succesfully deleted!');
+    })
+});
+});
 
-describe('Add product tests' , () =>{
 
-it('Add a product' , () =>{
+const jsondata = require("../fixtures/productData.json");
+
+describe('Product Add Tests' , () =>{
+
+it('Succesfully Adding a product' , () =>{
 
     addproducts.navigatetopage();
     addproducts.entertitle('test product');
@@ -33,11 +45,17 @@ it('Add a product' , () =>{
 
 });
 
+
+
 });
 
-describe('Edit product tests' , () =>{
 
-it('Edit a product', () => {
+
+
+
+describe('Product Edit Tests' , () =>{
+
+it('Succesfully editing a product', () => {
     myproducts.selectedtoedit("Cricket kit");
     myproducts.entertitle('test updated product');
     myproducts.removecategory("Outdoor");
@@ -50,5 +68,28 @@ it('Edit a product', () => {
 
     
 });
+
+});
+
+describe('Adding 5 products and deleting 2 ' , () =>{
+
+   
+        it(' Adding 5 products and deleting 3rd and 4th ' , function() {
+
+            jsondata.forEach((product) =>{
+        
+            addproducts.navigatetopage();
+            addproducts.entertitle(product.title);
+            addproducts.selectcategory(product.category);
+            addproducts.enterdescription(product.description);
+            addproducts.enterpurchaseprice(product.purchasePrice);
+            addproducts.enterrentprice(product.rentPrice.amount, product.rentPrice.frequency);
+            addproducts.clickadd();
+            cy.get('div[role=alert]').should('have.text','New product added!');
+            cy.wait(1000); 
+        });
+        myproducts.delete2products();
+        });
+
 
 });

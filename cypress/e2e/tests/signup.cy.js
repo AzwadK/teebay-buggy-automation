@@ -3,7 +3,7 @@ import { SignUp } from "../page-objects/signup_page";
 describe('Sign Up Test', () => {
     const signuppage = new SignUp();
   
-    it('Should Sign Up successfuly with valid credentials', () => {
+    it('Succesfull Registration', () => {
       signuppage.visit();
 
       signuppage.enterfirstname("Test")

@@ -3,7 +3,7 @@ import {LoginPage} from "../page-objects/login_page"
 describe('Login Tests', () => {
   const loginPage = new LoginPage();
 
-  it('Should log in with valid credentials', () => {
+  it('Succesfull Login', () => {
     loginPage.visit();
     loginPage.enterUsername('testuser@teebay.com');
     loginPage.enterPassword('123456');

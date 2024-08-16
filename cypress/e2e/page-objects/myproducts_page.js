@@ -24,6 +24,16 @@ export class MyProducts{
             
     }
 
+    delete2products(){
+        
+        cy.get('[data-testid="product-5"] > .sc-jXbUNg > .sc-dhKdcB > .ui').click();
+        cy.contains('button','Yes, delete').click();
+        cy.wait(1000);
+        cy.get('[data-testid="product-6"] > .sc-jXbUNg > .sc-dhKdcB > .ui').click();
+        cy.contains('button','Yes, delete').click();
+
+    }
+
     selectedtoedit(prodname){
         cy.contains('div', prodname).click();
     }
@@ -59,6 +69,8 @@ export class MyProducts{
         cy.get(this.rentdurationfield).click();
         cy.contains('span',renttype);
     }
+
+    
 
     clickadd(){
         cy.get(this.addbutton).click();
